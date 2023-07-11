@@ -1,0 +1,52 @@
+﻿@using Domain.Models;
+@model IReadOnlyCollection<SpamEmail>
+
+<div>
+    @using (@Html.BeginForm("StartSpam", "Spam"))
+    {
+        @Html.Label("Subject:")
+        <br />
+        @Html.TextBox("subject")
+        <br />
+        @Html.Label("Message:")
+        <br />
+        @Html.TextArea("message", new{style = "width: 100%; height: 100px;"})
+        <br />
+        <input type="submit" value="Start spaming" />
+    }
+</div>
+<hr />
+<div>
+   @using(@Html.BeginForm("Create", "Spam")){
+    @Html.Label("Email:")
+    <br />
+    @Html.TextBox("Email")
+    <br />
+    @Html.Label("Count of copies:")
+    <br />
+    <input type="number" name="CountOfCopies"/>
+    <br />
+    <input type="submit" value="Add email"/>
+   }
+</div>
+<br/>
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Count of copies</th>
+    </tr>
+    @foreach (var email in Model)
+    {
+        @using (@Html.BeginForm("Delete", "Spam"))
+        
+        {
+        <tr>
+            @Html.Hidden("id", email.Id)
+
+            <td >@email.Email</td>
+            <td name="CountOfCopies">@email.CountOfCopies</td>
+            <td><input type="submit" value="Delete"/></td>
+        </tr>
+        }
+    }
+</table>

@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form action="@Url.Action("Login", "Account")" method="post">
+
+
+    <div style="margin-left:260px;" class="row">
+        <div class="col-md-4">
+            <label>Email<span style="color:red;">*</span></label>
+            <input type="text" name="Email" class="form-control" placeholder="Email">
+            <br />
+
+            <label>Password<span style="color:red;">*</span></label>
+            <input type="password" name="Password" class="form-control" placeholder="Password">
+            <br />
+
+        </div>
+    </div>
+    <br />
+    <div style="margin:auto; width:100px;">
+        <button style="background-color:black; color:white;" type="submit" class="btn btn">Sing in</button>
+    </div>
+
+
+</form>
